@@ -53,11 +53,11 @@ Then visit [http://localhost:6363](http://localhost:6363) to view the metrics.
 
 On Prometheus
 
-![Prometheus Screenshot](https://raw.githubusercontent.com/qtumproject/qtum-exporter/master/prometheus.png)
+![Prometheus Screenshot](https://raw.githubusercontent.com/qtumproject/qtum-exporter/master/screenshots/prometheus.png)
 
 On Grafana
 
-![Grafana Screenshot](https://raw.githubusercontent.com/qtumproject/qtum-exporter/master/grafana.png)
+![Grafana Screenshot](https://raw.githubusercontent.com/qtumproject/qtum-exporter/master/screenshots/grafana.png)
 
 ## Environment Variables
 
