@@ -64,7 +64,6 @@ services:
   qtum-exporter:
     image: meherett/qtum-exporter:latest
     container_name: qtum-exporter
-    build: .
     ports:
       - "6363:6363"
     restart: always
