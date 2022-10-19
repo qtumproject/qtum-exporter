@@ -1,0 +1,2 @@
+prometheus_client>=0.15.0,<1
+httpx>=0.23.0,<1

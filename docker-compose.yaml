@@ -1,0 +1,82 @@
+version: "3.3"
+
+networks:
+  monitor-network:
+    driver: bridge
+
+volumes:
+  prometheus-volume:
+    driver: local
+  grafana-volume:
+    driver: local
+  testnet-volume:
+    driver: local
+
+services:
+
+  qtum-testnet:
+    image: qtum/qtum:latest
+    container_name: qtum-testnet
+    restart: always
+    ports:
+      - "3889:3889"
+    command: qtumd -testnet -txindex -addrindex=1 -rpcbind=0.0.0.0:3889 -rpcallowip=0.0.0.0/0 -logevents -rpcuser=qtum -rpcpassword=testpasswd -deprecatedrpc=accounts -printtoconsole
+    networks:
+      - monitor-network
+    volumes:
+      - testnet-volume:/root/.qtum
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    user: root
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-volume:/prometheus
+    restart: always
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/usr/share/prometheus/console_libraries"
+      - "--web.console.templates=/usr/share/prometheus/consoles"
+    networks:
+      - monitor-network
+    depends_on:
+      - qtum-testnet
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    restart: always
+    user: root
+    volumes:
+      - grafana-volume:/var/lib/grafana
+    networks:
+      - monitor-network
+    depends_on:
+      - qtum-testnet
+      - prometheus
+
+  qtum-exporter:
+    image: meherett/qtum-exporter:latest
+    container_name: qtum-exporter
+    build: .
+    ports:
+      - "6363:6363"
+    restart: always
+    environment:
+      QTUM_RPC_HOST: "qtum-testnet"
+      QTUM_RPC_PORT: "3889"
+      REFRESH_SECONDS: 5
+      LOG_LEVEL: "INFO"
+      TIMEOUT: 15
+    networks:
+      - monitor-network
+    depends_on:
+      - qtum-testnet
+      - prometheus
+      - grafana
