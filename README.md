@@ -49,6 +49,16 @@ docker run -d -p 6363:6363 \
 
 Then visit [http://localhost:6363](http://localhost:6363) to view the metrics.
 
+## Screenshot
+
+On Prometheus
+
+![Prometheus Screenshot](https://raw.githubusercontent.com/qtumproject/qtum-exporter/master/prometheus.png)
+
+On Grafana
+
+![Grafana Screenshot](https://raw.githubusercontent.com/qtumproject/qtum-exporter/master/grafana.png)
+
 ## Environment Variables
 
 Here are the following environment variables with default values:
