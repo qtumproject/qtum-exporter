@@ -4,7 +4,6 @@ make.bat
 Makefile
 
 # Folders stuff
-experiment/
 .idea/
 .tox/
 venv/
