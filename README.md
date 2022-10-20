@@ -27,6 +27,8 @@ To use the pre-built image just pull it:
 docker pull meherett/qtum-exporter:latest
 ```
 
+For the versions available, see the [tags on docker hub](https://hub.docker.com/r/meherett/qtum-exporter/tags) repository.
+
 ## Quick Usage
  
 To run qtum-exporter from source code:
