@@ -2,8 +2,8 @@
 # Qtum Exporter
 
 [![GitHub License](https://img.shields.io/github/license/qtumproject/qtum-exporter?color=black)](https://github.com/qtumproject/qtum-exporter)
-[![Docker Image Version](https://img.shields.io/docker/v/meherett/qtum-exporter)](https://github.com/qtumproject/qtum-exporter)
-[![Docker Image Size](https://img.shields.io/docker/image-size/meherett/qtum-exporter)](https://github.com/qtumproject/qtum-exporter)
+[![Docker Image Version](https://img.shields.io/docker/v/meherett/qtum-exporter)](https://hub.docker.com/repository/docker/meherett/qtum-exporter)
+[![Docker Image Size](https://img.shields.io/docker/image-size/meherett/qtum-exporter)](https://hub.docker.com/repository/docker/meherett/qtum-exporter)
 
 A [Prometheus](https://prometheus.io) exporter for Qtum nodes.
 
